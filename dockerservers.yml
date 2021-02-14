@@ -1,0 +1,9 @@
+-
+    name: Instalacion de Docker Engine en Nodos Correspondientes  
+    hosts: kubernetes-cluster
+    become: yes
+    gather_facts: False
+    roles:
+        - dockerengine
+        - common
+        

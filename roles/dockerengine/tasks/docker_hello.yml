@@ -1,0 +1,13 @@
+---
+- name: Probando Containers
+  docker_container:
+    name: container_proof
+    image: debian
+    state: present
+    env:
+        h: $HOST
+    command: echo $h
+  register: docker
+
+- debug:
+    var: docker.state.status

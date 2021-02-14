@@ -1,0 +1,5 @@
+---
+  - include: config_dependencies.yml
+  - include: add_gpg_key.yml
+  - include: install_docker_engine.yml
+  - include: docker_hello.yml

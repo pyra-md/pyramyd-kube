@@ -1,0 +1,11 @@
+---
+- name: Incluir variables para la instalacion de dependencias
+  include_vars:
+    file: vars/docker_packages.yml
+
+- name: Actualisar repositorios e instalar Docker Engine packages
+  apt:
+    name: '{{item.name}}'
+    update_cache: yes
+  with_items: '{{docker_engine_packages}}'
+  

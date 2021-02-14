@@ -1,0 +1,42 @@
+dependencias:
+   # DOCUMENTATION INSTALL DOCKER ON DEBIAN GOOD PRACTICES  
+   # https://docs.docker.com/engine/install/debian/
+
+   # BORRAMOS PAQUETES SI SE ENCUENTRAN EN EL SISTEMA 
+    - 
+      name: docker-engine
+      state: absent
+
+    - 
+      name: docker.io
+      state: absent
+
+    - 
+      name: containerd runc
+      state: absent
+
+  # INSTALACION DE  PAQUETES PARA DOCKER ENGINE  
+    - 
+      name: apt-transport-https
+      state: present
+
+    - 
+      name: ca-certificates
+      state: present
+
+    - 
+      name: curl
+      state: present
+
+    - 
+      name: gnupg-agent
+      state: present
+    
+    - 
+      name: software-properties-common
+      state: present
+docker_engine_packages:
+    - name: docker-ce
+    - name: docker-ce-cli 
+    - name: containerd.io  
+   

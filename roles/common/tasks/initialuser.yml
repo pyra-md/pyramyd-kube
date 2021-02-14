@@ -1,0 +1,21 @@
+- name: creacion de usuario 'kubeagent' 
+  user: 
+    name: kubeagent
+    append: yes
+    state: present
+    shell: /bin/zsh
+    groups: 
+      - docker
+
+- name: Permitir  passwordless sudo a usuario 'kubeagent'  
+  lineinfile:
+    path: /etc/sudoers
+    line: 'kubeagent ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+
+- name: Configurar llave SSH para el usuario 'kubeagent'
+  authorized_key: 
+    user: kubeagent 
+    key: "{{item}}"
+  with_file:
+    - ~/.ssh/id_rsa.pub
